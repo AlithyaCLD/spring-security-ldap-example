@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 		.anyRequest().authenticated()
 		.and()
-		.formLogin().defaultSuccessUrl("/index.jsp",true);
+		.formLogin().defaultSuccessUrl("/app",true);
 	}
 
 @Override
