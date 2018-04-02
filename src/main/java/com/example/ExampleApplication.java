@@ -12,11 +12,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableAutoConfiguration
 @EnableWebSecurity(debug=true)
 @EnableWebMvc
-public class BoosterApplication {
+public class ExampleApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BoosterApplication.class, args);
+        SpringApplication.run(ExampleApplication.class, args);
     }
-
-   
 }
