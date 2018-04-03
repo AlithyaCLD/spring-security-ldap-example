@@ -2,6 +2,7 @@ package com.example.controller;
 
 import java.util.Map;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -9,14 +10,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DefaultController {
     
 	
-	private String MESSAGE = "asdf - kjhkjh  ";
+	private String MESSAGE = "hello";
 	
-	private String TITLE = "asdf";
+	private String TITLE = "Spring Security LDAP test";
 
 	@RequestMapping("/app")
 	public String welcome(Map<String, Object> model) {
 		model.put("title", TITLE);
 		model.put("message", MESSAGE);
+		model.put("username", SecurityContextHolder.getContext().getAuthentication().getName());
+		model.put("roles", SecurityContextHolder.getContext().getAuthentication().getAuthorities());
+		model.put("principal", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+		return "default";
+	}
+
+@RequestMapping("/logout")
+	public String logout(Map<String, Object> model) {
+		 SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false);
 		return "default";
 	}
 
